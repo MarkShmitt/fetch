@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+    <script>
+      function Machine(energy) {
+        this._energy = energy;
+
+        this._enabled = false;
+
+        this.enable = function () {
+          this._enabled = true;
+        };
+
+        this.disable = function () {
+          this._enabled = false;
+        };
+      }
+
+      function Transport(energy) {
+        Machine.apply(this, arguments);
+
+        var oilAmount = 0;
+        
+        this.setOilAmount = function (amount) {
+           if (amount <= 0) {
+      throw alert ('Нет бензина!');
+      }    
+          oilAmount = amount;
+     
+    };
+        function onReady() {
+         alert('Приехали, все свободны!');
+       }
+        
+
+        this.run = function() {
+  			if (!this._enabled) {
+    		alert ('Двигатель не заведен!');
+      }else{
+  		setTimeout(onReady, 1000);
+  	}
+    }
+
+      };
+
+      var transport = new Transport(1000);
+
+      transport.setOilAmount(6);
+      //transport.enable();
+      transport.run();
+
+    </script>
+  </body>
+
+</html>
